@@ -1,0 +1,8 @@
+(function (angular, Chart) {
+    'use strict';
+    angular.module('ng.chart.js', []);
+
+
+    angular.factory('config')
+
+})();
