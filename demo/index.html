@@ -1,0 +1,19 @@
+<html ng-app="app">
+
+<head>
+    <title></title>
+</head>
+
+<body ng-controller="AppCtrl">
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/angular/angular.js"></script>
+    <script src="../lib/Chart.js/Chart.js"></script>
+    <script src="../dist/appatronic-chart.js"></script>
+    <script src="app.js"></script>
+
+    <canvas appatronic:chart chart-data="chartData" chart-options="chartOptions" chart-type="{{chartType}}"></canvas>
+</body>
+
+
+
+</html>
