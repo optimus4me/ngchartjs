@@ -53,36 +53,30 @@
             // Function - on animation complete
             onAnimationComplete: function () {},
 
+            scaleLabel: "$<%=value%>",
+
+            yAxisLabel: "Y Axis Label"
+
             //String - A legend template
 
         };
         $scope.chartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'My First dataset',
-                    fillColor: 'rgba(220,220,220,0.2)',
-                    strokeColor: 'rgba(220,220,220,1)',
-                    pointColor: 'rgba(220,220,220,1)',
-                    pointStrokeColor: '#fff',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(220,220,220,1)',
-                    data: [65, 59, 80, 81, 56, 55, 40]
-        },
-                {
-                    label: 'My Second dataset',
-                    fillColor: 'rgba(151,187,205,0.2)',
-                    strokeColor: 'rgba(151,187,205,1)',
-                    pointColor: 'rgba(151,187,205,1)',
-                    pointStrokeColor: '#fff',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(151,187,205,1)',
-                    data: [28, 48, 40, 19, 86, 27, 90]
-        }
-      ]
+            labels: ['', 'On Premise Sale', '', '', '', '', ''],
+            datasets: [{
+                label: "My First dataset",
+                //new option, type will default to bar as that what is used to create the scale
+                type: "bar",
+                fillColor: "rgba(220,20,220,0.2)",
+                strokeColor: "rgba(220,20,220,1)",
+                pointColor: "rgba(220,20,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [0, 2000, 0, 0, 0, 0, 0]
+    }]
         };
 
-        $scope.chartType = 'line';
+        $scope.chartType = "bar";
     }
 
 })();

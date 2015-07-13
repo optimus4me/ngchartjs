@@ -12,7 +12,7 @@
             scope: {
                 data: '=chartData',
                 options: '=chartOptions',
-                type: '@chartType',
+                type: '=chartType',
                 legend: '=chartLegend',
                 chart: '=chart'
             },
@@ -47,12 +47,18 @@
     function chartjsservice() {
         var service = {
             achart: function achart(context) {
+
                 return new Chart(context);
             },
             resolve: function resolve(achart, type, data, options) {
                 var chartType = GetChart(type);
                 if (chartType) {
-                    return achart[chartType](data, options);
+                    if (chartType === "LBar") {
+                        return achart.Overlay(data, options);
+                    } else {
+                        return achart[chartType](data, options);
+                    }
+
                 } else {
                     throw 'Please specify chart type in the attribute';
                 }
@@ -61,19 +67,26 @@
                     switch (type) {
                     case "line":
                         return "Line";
-                        defualt:
-                            return;
+
+                    case "bar":
+                        return "Bar";
+
+                    case "radar":
+                        return "Radar";
+
+                    case "polararea":
+                        return "PolarArea";
+
+                    case "pie":
+                        return "Pie";
+                    default:
+                        return;
                     }
                 }
 
             }
         }
         return service;
-
-
-
-
-
 
     }
 })();
