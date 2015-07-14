@@ -8,10 +8,13 @@
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="../lib/angular/angular.js"></script>
     <script src="../lib/Chart.js/Chart.js"></script>
-    <script src="../dist/appatronic-chart.js"></script>
+    <script src="../dist/builder-chart.js"></script>
     <script src="app.js"></script>
 
-    <canvas builder:chart chart-data="chartData" chart-options="chartOptions" chart-type="chartType"></canvas>
+    <canvas builder:bar-chart chart-data="chartData" chart-options="chartOptions"></canvas>
+    <canvas builder:line-chart chart-data="chartData" chart-options="chartOptions"></canvas>
+    <canvas builder:pie-chart chart-data="donutdata" chart-options="donutoptions"></canvas>
+
 
 </body>
 
