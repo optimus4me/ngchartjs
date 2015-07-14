@@ -1,12 +1,12 @@
 (function () {
     'use strict';
-    angular.module('appatronic.chartjs', []);
+    angular.module('builder.chartjs', []);
 
-    angular.module('appatronic.chartjs')
+    angular.module('builder.chartjs')
         .factory('chartjsservice', chartjsservice)
-        .directive('appatronicChart', ['chartjsservice', AppatronicChart]);
+        .directive('builderChart', ['chartjsservice', BuilderChart]);
 
-    function AppatronicChart(chartjsservice) {
+    function BuilderChart(chartjsservice) {
         return {
             restrict: 'EA',
             scope: {
@@ -14,30 +14,30 @@
                 options: '=chartOptions',
                 type: '=chartType',
                 legend: '=chartLegend',
-                chart: '=chart'
+                chart: '=chart',
+                callBack: "&method"
             },
             link: function ($scope, $element, $attrs) {
-                console.log($attrs.type);
                 var canvas = document.createElement('canvas');
                 document.body.appendChild(canvas);
                 var context = $element[0].getContext("2d");
                 var chart = chartjsservice.achart(context);
-                var appatronicChart;
+                var builderChart;
 
                 $scope.$on('$destroy', function () {
-                    if (appatronicChart) {
-                        appatronicChart.destroy();
+                    if (builderChart) {
+                        builderChart.destroy();
                     }
                 });
                 $scope.$watch("data", function (value) {
                     if (value) {
-                        if (appatronicChart) {
-                            appatronicChart.destroy();
+                        if (builderChart) {
+                            builderChart.destroy();
                         }
                         if ($scope.type) {
-                            appatronicChart = chartjsservice.resolve(chart, $scope.type, $scope.data, $scope.options);
+                            builderChart = chartjsservice.resolve(chart, $scope.type, $scope.data, $scope.options);
                         }
-                        appatronicChart.resize();
+                        builderChart.resize();
                     }
                 }, true);
             }
@@ -76,7 +76,6 @@
 
                     case "polararea":
                         return "PolarArea";
-
                     case "pie":
                         return "Pie";
                     default:
