@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('app', ['builder.chartjs']);
+    angular.module('app', ['spectrum.chartjs']);
 
     angular.module('app').controller('AppCtrl', ['$scope', AppCtrl]);
 

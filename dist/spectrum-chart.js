@@ -1,48 +1,48 @@
 (function () {
     'use strict';
-    angular.module('builder.chartjs', []);
+    angular.module('spectrum.chartjs', []);
 
-    angular.module('builder.chartjs')
+    angular.module('spectrum.chartjs')
         .factory('chartjsservice', chartjsservice)
-        .directive('builderLineChart', ['chartjsservice', BuilderLineChart])
-        .directive('builderBarChart', ['chartjsservice', BuilderBarChart])
-        .directive('builderPieChart', ['chartjsservice', BuilderPieChart])
-        .directive('builderLineBarChart', ['chartjsservice', BuilderLineBarChart])
-        .directive('builderChart', ['chartjsservice', BuilderRadarChart])
-        .directive('builderPolarAreaChart', ['chartjsservice', BuilderPolarAreaChart])
-        .directive('builderChart', ['chartjsservice', BuilderChart]);
+        .directive('spectrumLineChart', ['chartjsservice', SpectrumLineChart])
+        .directive('spectrumBarChart', ['chartjsservice', SpectrumBarChart])
+        .directive('spectrumPieChart', ['chartjsservice', SpectrumPieChart])
+        .directive('spectrumLineBarChart', ['chartjsservice', SpectrumLineBarChart])
+        .directive('spectrumChart', ['chartjsservice', SpectrumRadarChart])
+        .directive('spectrumPolarAreaChart', ['chartjsservice', SpectrumPolarAreaChart])
+        .directive('spectrumChart', ['chartjsservice', SpectrumChart]);
 
-    function BuilderLineChart(chartjsservice) {
+    function SpectrumLineChart(chartjsservice) {
         var directive = new DirectiveResolver(chartjsservice, 'line');
         return directive;
     }
 
-    function BuilderBarChart(chartjsservice) {
+    function SpectrumBarChart(chartjsservice) {
         var directive = new DirectiveResolver(chartjsservice, 'bar');
         return directive;
     }
 
-    function BuilderPieChart(chartjsservice) {
+    function SpectrumPieChart(chartjsservice) {
         var directive = new DirectiveResolver(chartjsservice, 'pie');
         return directive;
     }
 
-    function BuilderLineBarChart(chartjsservice) {
+    function SpectrumLineBarChart(chartjsservice) {
         var directive = new DirectiveResolver(chartjsservice, 'lbar');
         return directive;
     }
 
-    function BuilderRadarChart(chartjsservice) {
+    function SpectrumRadarChart(chartjsservice) {
         var directive = new DirectiveResolver(chartjsservice, 'radar');
         return directive;
     }
 
-    function BuilderPolarAreaChart(chartjsservice) {
+    function SpectrumPolarAreaChart(chartjsservice) {
         var directive = new DirectiveResolver(chartjsservice, 'polarArea');
         return directive;
     }
 
-    function BuilderChart(chartjsservice) {
+    function SpectrumChart(chartjsservice) {
         var directive = new DirectiveResolver(chartjsservice, null);
         return directive;
     }
@@ -72,22 +72,22 @@
 
                 var context = $element[0].getContext("2d");
                 var chart = chartjsservice.achart(context);
-                var builderChart;
+                var spectrumChart;
 
                 $scope.$on('$destroy', function () {
-                    if (builderChart) {
-                        builderChart.destroy();
+                    if (spectrumChart) {
+                        spectrumChart.destroy();
                     }
                 });
                 $scope.$watch("data", function (data) {
                     if (data) {
-                        if (builderChart) {
-                            builderChart.destroy();
+                        if (spectrumChart) {
+                            spectrumChart.destroy();
                         }
                         if ($attrs.type || chartType) {
-                            builderChart = chartjsservice.resolve(chart, $attrs.type || ChartTypes[chartType], $scope.data, $scope.options);
+                            spectrumChart = chartjsservice.resolve(chart, $attrs.type || ChartTypes[chartType], $scope.data, $scope.options);
                         }
-                        builderChart.resize();
+                        spectrumChart.resize();
                     }
                 }, true);
             }
