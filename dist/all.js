@@ -1,3 +1,12 @@
+/*!
+ * SPECTRUM CHARTJS
+ * 
+ * Version: 1.0.0
+ * https://github.com/optimus4me/spectrumchartjs
+ * Copyright 2015 Riju Vashisht
+ * Released under the MIT license
+ * License - https://github.com/optimus4me/spectrumchartjs/blob/master/LICENSE
+ */
 (function () {
     'use strict';
     angular.module('spectrum.chartjs', []);
