@@ -75,6 +75,7 @@
                 type: '=chartType',
                 legend: '=chartLegend',
                 chart: '=chart',
+                height: "=chartHeight",
                 callBack: "&method"
             },
             link: function ($scope, $element, $attrs) {
