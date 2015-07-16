@@ -1,6 +1,6 @@
 /*!
  * SPECTRUM CHARTJS
- * 
+ *
  * Version: 1.0.0
  * https://github.com/optimus4me/spectrumchartjs
  * Copyright 2015 Riju Vashisht
@@ -79,10 +79,28 @@
             },
             link: function ($scope, $element, $attrs) {
 
-                var context = $element[0].getContext("2d");
+                var canvas = $element[0];
+                if ($scope.height) {
+                    canvas.height = $scope.height;
+                } else {
+                    canvas.height = $scope.height = $element[0].parentElement.clientHeight;
+                }
+                canvas.width = $element[0].parentElement.clientWidth;
+                var context = canvas.getContext("2d");
                 var chart = chartjsservice.achart(context);
                 var spectrumChart;
-
+                angular.element(window).on('resize', function () {
+                    if (spectrumChart) {
+                        if ($attrs.type || chartType) {
+                            var options = spectrumChart.options;
+                            spectrumChart.destroy();
+                            spectrumChart = chartjsservice.resolve(chart, $attrs.type || ChartTypes[chartType], $scope.data, options);
+                        }
+                        spectrumChart.chart.height = $element[0].parentElement.clientHeight;
+                        spectrumChart.chart.width = $element[0].parentElement.clientWidth;
+                        spectrumChart.resize();
+                    }
+                });
                 $scope.$on('$destroy', function () {
                     if (spectrumChart) {
                         spectrumChart.destroy();
