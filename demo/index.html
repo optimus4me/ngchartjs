@@ -7,11 +7,10 @@
 <body ng-controller="AppCtrl">
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="../lib/angular/angular.js"></script>
-    <script src="../lib/Chart.js/Chart.js"></script>
     <script src="../dist/all.min.js"></script>
     <script src="app.js"></script>
 
-    <canvas spectrum:bar-chart chart-data="chartData" chart-options="chartOptions"></canvas>
+    <canvas spectrum:line-bar-chart chart-data="chartData" chart-options="chartOptions" chart-height="400"></canvas>
     <canvas spectrum:line-chart chart-data="chartData" chart-options="chartOptions"></canvas>
     <canvas spectrum:pie-chart chart-data="donutdata" chart-options="donutoptions"></canvas>
 
